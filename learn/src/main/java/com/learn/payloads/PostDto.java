@@ -1,6 +1,8 @@
 package com.learn.payloads;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 public class PostDto {
 
@@ -17,6 +19,16 @@ private Integer postId;
 	private CategoryDTO category;
 
 	private UserDTO user;
+	
+	public Set<CommentDto> getComments() {
+		return comments;
+	}
+
+	public void setComments(Set<CommentDto> comments) {
+		this.comments = comments;
+	}
+
+	private Set<CommentDto> comments=new HashSet<>();
 
 	public PostDto() {
 		super();
