@@ -42,6 +42,8 @@ public class AuthController {
 	private UserDetailsService userDetailsService;
 	@Autowired
 	private AuthenticationManager authenticationManager;
+	@Autowired
+	private UserService userService;
 	
 	@PostMapping("/login")
 	public ResponseEntity< JwtAuthResponse> createToken(@RequestBody JwtAuthRequest request) throws Exception
@@ -69,6 +71,12 @@ public class AuthController {
 		
 		
 		
+	}
+	
+	@PostMapping("/register")
+	public ResponseEntity<UserDTO> registerUser(@Valid @RequestBody UserDTO userDto) {
+		UserDTO registeredUser = this.userService.registerNewUser(userDto);
+		return new ResponseEntity<UserDTO>(registeredUser, HttpStatus.CREATED);
 	}
 
 }
